@@ -4,37 +4,31 @@ import layout from './layout.html'
 import style from './style'
 import defaultJSS from './default-jss'
 
-const sheet = jss.createStyleSheet(style)
-let textarea
-let output
-
 function render() {
+  const sheet = jss.createStyleSheet(style).attach()
   document.body.innerHTML = ject(layout, sheet.classes)
-  textarea = document.getElementsByClassName(sheet.classes.textarea)[0]
-  output = document.getElementsByClassName(sheet.classes.output)[0]
-  sheet.attach()
+  const textarea = document.getElementsByClassName(sheet.classes.textarea)[0]
+  const output = document.getElementsByClassName(sheet.classes.output)[0]
   textarea.focus()
+  return {textarea, output, sheet}
 }
 
 function convert(str) {
   let userStyle
   try {
-    const fn = new Function(`${str}`) // eslint-disable-line no-new-func
-    userStyle = fn()
+    userStyle = new Function(`${str}`)() // eslint-disable-line no-new-func
   }
   catch (err) {
-    console.error(err)
     return err.message
   }
-  const userSheet = jss.createStyleSheet(userStyle)
-  return userSheet.toString()
+  return jss.createStyleSheet(userStyle).toString()
 }
 
-function load() {
+function load({textarea, output}) {
   const jssStr = localStorage.jss || defaultJSS
   if (jssStr) {
-    renderInput(jssStr)
-    renderOutput(jssStr)
+    renderInput(textarea, jssStr)
+    renderOutput(output, jssStr)
   }
 }
 
@@ -42,12 +36,13 @@ function save(str) {
   localStorage.jss = str
 }
 
-function listen() {
+function listen({textarea, output}) {
+  // React on text input.
   textarea.addEventListener('input', () => {
     setTimeout(() => {
       const {value} = textarea
       save(value)
-      renderOutput(value)
+      renderOutput(output, value)
     })
   })
 
@@ -58,20 +53,22 @@ function listen() {
       const start = textarea.selectionStart
       const end = textarea.selectionEnd
       const str = textarea.value.substr(0, start) + '  ' + textarea.value.substr(end)
-      renderInput(str)
+      renderInput(textarea, str)
       textarea.selectionStart = textarea.selectionEnd = start + 2
     }
   })
 }
 
-function renderInput(str) {
+function renderInput(textarea, str) {
   textarea.value = str
 }
 
-function renderOutput(str) {
+function renderOutput(output, str) {
   output.innerHTML = convert(str)
 }
 
-render()
-load()
-listen()
+(() => {
+  const state = render()
+  load(state)
+  listen(state)
+})()
