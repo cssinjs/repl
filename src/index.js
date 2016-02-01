@@ -6,7 +6,8 @@ import defaultJSS from './default-jss'
 
 const layout = template(layoutHtml)
 const sheet = jss.createStyleSheet(style)
-let textarea, output
+let textarea
+let output
 
 function render() {
   document.body.innerHTML = layout({
@@ -19,22 +20,23 @@ function render() {
 }
 
 function convert(str) {
-  let style
+  let userStyle
   try {
-    const fn = new Function(`${str}`)
-    style = fn()
-  } catch (err) {
+    const fn = new Function(`${str}`) // eslint-disable-line no-new-func
+    userStyle = fn()
+  }
+  catch (err) {
     return err.message
   }
-  const sheet = jss.createStyleSheet(style)
-  return sheet.toString()
+  const userSheet = jss.createStyleSheet(userStyle)
+  return userSheet.toString()
 }
 
 function load() {
-  let jss = localStorage.jss || defaultJSS
-  if (jss) {
-    renderInput(jss)
-    renderOutput(jss)
+  const jssStr = localStorage.jss || defaultJSS
+  if (jssStr) {
+    renderInput(jssStr)
+    renderOutput(jssStr)
   }
 }
 
@@ -42,7 +44,7 @@ function save(str) {
   localStorage.jss = str
 }
 
-function listen() {
+function listen() {
   textarea.addEventListener('input', () => {
     setTimeout(() => {
       const {value} = textarea
@@ -52,9 +54,9 @@ function listen() {
   })
 
   // Insert 2 spaces when on tab press.
-  textarea.addEventListener('keydown', e => {
-    if (e.keyCode === 9) {
-      e.preventDefault()
+  textarea.addEventListener('keydown', event => {
+    if (event.keyCode === 9) {
+      event.preventDefault()
       const start = textarea.selectionStart
       const end = textarea.selectionEnd
       const str = textarea.value.substr(0, start) + '  ' + textarea.value.substr(end)
@@ -64,7 +66,7 @@ function listen() {
   })
 }
 
-function renderInput(str) {
+function renderInput(str) {
   textarea.value = str
 }
 

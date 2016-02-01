@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-jss",
+  "env": {
+    "qunit": true
+  }
+}
