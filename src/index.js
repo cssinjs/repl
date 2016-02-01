@@ -26,6 +26,7 @@ function convert(str) {
     userStyle = fn()
   }
   catch (err) {
+    console.error(err)
     return err.message
   }
   const userSheet = jss.createStyleSheet(userStyle)
