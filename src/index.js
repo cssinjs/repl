@@ -1,18 +1,15 @@
-import template from 'lodash/template'
+import ject from 'ject'
 import jss from './jss'
-import layoutHtml from './layout.html'
+import layout from './layout.html'
 import style from './style'
 import defaultJSS from './default-jss'
 
-const layout = template(layoutHtml)
 const sheet = jss.createStyleSheet(style)
 let textarea
 let output
 
 function render() {
-  document.body.innerHTML = layout({
-    classes: sheet.classes
-  })
+  document.body.innerHTML = ject(layout, sheet.classes)
   textarea = document.getElementsByClassName(sheet.classes.textarea)[0]
   output = document.getElementsByClassName(sheet.classes.output)[0]
   sheet.attach()

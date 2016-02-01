@@ -38,14 +38,14 @@
     "webpack": "1.12.2"
   },
   "dependencies": {
+    "ject": "^1.1.0",
     "jss": "^3.3.0",
     "jss-camel-case": "^1.0.1",
     "jss-default-unit": "^2.1.0",
     "jss-extend": "^1.1.0",
     "jss-nested": "^1.0.2",
     "jss-props-sort": "^1.0.0",
-    "jss-vendor-prefixer": "^1.0.1",
-    "lodash": "^4.1.0"
+    "jss-vendor-prefixer": "^1.0.1"
   },
   "scripts": {
     "all": "npm run lint && npm run build",
