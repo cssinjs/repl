@@ -13,6 +13,7 @@ export default {
   header: {
     display: 'flex',
     borderBottom: '1px solid #333',
+    flexShrink: 0,
     '& a': {
       display: 'block',
       margin,

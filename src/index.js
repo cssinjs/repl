@@ -2,6 +2,7 @@ import template from 'lodash/template'
 import jss from './jss'
 import layoutHtml from './layout.html'
 import style from './style'
+import defaultJSS from './default-jss'
 
 const layout = template(layoutHtml)
 const sheet = jss.createStyleSheet(style)
@@ -30,7 +31,7 @@ function convert(str) {
 }
 
 function load() {
-  const {jss} = localStorage
+  let jss = localStorage.jss || defaultJSS
   if (jss) {
     renderInput(jss)
     renderOutput(jss)
