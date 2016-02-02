@@ -10,22 +10,37 @@ import defaultJSS from './default-jss'
 
 function render() {
   const sheet = jss.createStyleSheet(style).attach()
-  document.body.innerHTML = ject(layout, sheet.classes)
+  const div = document.createElement('div')
+  div.innerHTML = ject(layout, sheet.classes)
+  document.body.appendChild(div)
 
   const inputElem = document.getElementsByClassName(sheet.classes.input)[0]
   const input = ace.edit(inputElem)
-  input.getSession().setMode('ace/mode/javascript')
-  input.setTheme('ace/theme/tomorrow')
-  input.$blockScrolling = Infinity
+  setupEditor(input, {mode: 'ace/mode/javascript'})
+
 
   const outputElem = document.getElementsByClassName(sheet.classes.output)[0]
   const output = ace.edit(outputElem)
-  output.getSession().setMode('ace/mode/css')
-  output.setTheme('ace/theme/tomorrow')
-  output.setReadOnly(true)
-  output.$blockScrolling = Infinity
+  setupEditor(output, {mode: 'ace/mode/css', readonly: true})
 
   return {input, output, sheet}
+}
+
+function setupEditor(editor, options = {}) {
+  const session = editor.getSession()
+
+  if (options.readonly) {
+    editor.setReadOnly(true)
+    delete options.readonly
+  }
+
+  session.setOptions({
+    tabSize: 2,
+    useSoftTabs: true,
+    ...options
+  })
+  editor.setTheme('ace/theme/tomorrow')
+  editor.$blockScrolling = Infinity
 }
 
 function convert(str) {
@@ -53,7 +68,7 @@ function save(str) {
 
 function listen({input, output}) {
   // React on text input.
-  input.addEventListener('change', (e) => {
+  input.addEventListener('change', () => {
     const value = input.getValue()
     save(value)
     renderOutput(output, value)

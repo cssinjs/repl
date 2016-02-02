@@ -1,4 +1,4 @@
-const logoSize = 50
+const logoSize = 70
 const margin = 10
 
 export default {
