@@ -16,7 +16,7 @@ function render() {
 function convert(str) {
   let userStyle
   try {
-    userStyle = new Function(`${str}`)() // eslint-disable-line no-new-func
+    userStyle = new Function(str)() // eslint-disable-line no-new-func
   }
   catch (err) {
     return err.message
