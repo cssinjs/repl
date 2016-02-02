@@ -46,19 +46,6 @@ export default {
     borderRight: '1px solid #333'
   },
   output: {
-    extend: 'section',
-    whiteSpace: 'pre'
-  },
-  textarea: {
-    width: '100%',
-    height: '100%',
-    outline: 0,
-    border: 0,
-    resize: 'none',
-    font: 'inherit'
-  },
-  code: {
-    width: '100%',
-    height: '100%',
+    extend: 'section'
   }
 }
