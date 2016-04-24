@@ -1,6 +1,4 @@
 {
   "extends": "eslint-config-jss",
-  "env": {
-    "qunit": true
-  }
+  "parser": "babel-eslint"
 }

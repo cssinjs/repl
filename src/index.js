@@ -1,17 +1,19 @@
-import ject from 'ject'
 import ace from 'brace'
 import 'brace/mode/javascript'
 import 'brace/mode/css'
 import 'brace/theme/tomorrow'
 import jss from './jss'
-import layout from './layout.html'
+import layout from './layout'
 import style from './style'
 import defaultJSS from './default-jss'
 
 function render() {
   const sheet = jss.createStyleSheet(style).attach()
   const div = document.createElement('div')
-  div.innerHTML = ject(layout, sheet.classes)
+  div.innerHTML = layout({
+    classes: sheet.classes,
+    version: jss.version
+  })
   document.body.appendChild(div)
 
   const inputElem = document.getElementsByClassName(sheet.classes.input)[0]

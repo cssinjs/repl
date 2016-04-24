@@ -4,7 +4,11 @@ var webpack = require('webpack')
 
 module.exports = {
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
   module: {
     loaders: [
@@ -12,10 +16,6 @@ module.exports = {
         loader: 'babel-loader',
         test: /\.js$/,
         exclude: /node_modules/
-      },
-      {
-        test: /\.html$/,
-        loader: 'html-loader'
       }
     ]
   },
