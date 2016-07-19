@@ -12,7 +12,7 @@ return {
       'background 0.3s',
       'color 0.3s',
       'font-size 0.3s'
-    ].join(' '),
+    ].join(', '),
     '&:before': {
       content: '"icon"'
     }
@@ -29,6 +29,6 @@ return {
       fontSize: 16
     }
   }
-}
+};
 `
 
