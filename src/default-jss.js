@@ -2,18 +2,14 @@ export default
 `var font = {
   fontSize: 12,
   lineHeight: 1
-}
+};
 
 return {
   button: {
     extend: font,
     border: 'none',
     margin: [[5, 10]],
-    transition: [[
-      'background',
-      'color',
-      'font-size'
-    ]],
+    transition: ['background', 'color', 'font-size'],
     transitionDuration: 300,
     '&:before': {
       content: '"icon"'
@@ -36,5 +32,5 @@ return {
       fontSize: 16
     }
   }
-}`
-
+};
+`

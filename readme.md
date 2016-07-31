@@ -1,1 +1,1 @@
-Playground website for [JSS](https://github.com/jsstyles/jss)
+Playground website for [JSS](https://github.com/cssinjs/jss)
