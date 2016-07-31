@@ -8,20 +8,27 @@ return {
   button: {
     extend: font,
     border: 'none',
-    transition: [
-      'background 0.3s',
-      'color 0.3s',
-      'font-size 0.3s'
-    ].join(' '),
+    margin: [[5, 10]],
+    transition: [[
+      'background',
+      'color',
+      'font-size'
+    ]],
+    transitionDuration: 300,
     '&:before': {
       content: '"icon"'
     }
   },
   redButton: {
     extend: 'button',
-    background: 'red',
+    background: 'linear-gradient(to right, red 0%, green 100%)',
+    fallbacks: {
+      background: 'red'
+    },
     '&:hover': {
-      border: '1px solid blue'
+      border: [
+        [1, 'solid', 'blue'], [1, 'solid', 'green']
+      ]
     }
   },
   '@media (min-width: 1024px)': {
@@ -29,6 +36,5 @@ return {
       fontSize: 16
     }
   }
-}
-`
+}`
 
