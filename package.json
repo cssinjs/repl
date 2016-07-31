@@ -44,9 +44,9 @@
     "jss-camel-case": "^1.0.1",
     "jss-default-unit": "^4.0.0",
     "jss-extend": "^1.1.0",
-    "jss-nested": "^1.0.2",
+    "jss-nested": "^2.0.0",
     "jss-props-sort": "^1.0.0",
-    "jss-vendor-prefixer": "^2.0.0"
+    "jss-vendor-prefixer": "^3.0.0"
   },
   "scripts": {
     "all": "npm run lint && npm run build",
