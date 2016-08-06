@@ -5,7 +5,7 @@ import 'brace/theme/tomorrow'
 import jss from './jss'
 import layout from './layout'
 import style from './style'
-import defaultJSS from './default-jss'
+import example from './example'
 
 function render() {
   const sheet = jss.createStyleSheet(style).attach()
@@ -57,7 +57,7 @@ function convert(str) {
 }
 
 function load({input, output}) {
-  const jssStr = localStorage.jss || defaultJSS
+  const jssStr = localStorage.jss || example
   if (jssStr) {
     renderInput(input, jssStr)
     renderOutput(output, jssStr)
