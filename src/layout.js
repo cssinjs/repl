@@ -1,11 +1,11 @@
-export default ({classes, version}) => `
+export default ({classes, versions}) => `
   <div class="${classes.repl}">
     <header class="${classes.header}">
       <a href="https://github.com/jsstyles/jss"></a>
       <section>
         <h2>JSS Playground</h2>
         <p>JSS is on the left, CSS on the right. JSS code is a function body.</p>
-        <p>jss@${version}</p>
+        <p>jss@${versions.jss} & jss-preset-default@${versions.preset}</p>
       </section>
     </header>
     <div class="${classes.sections}">

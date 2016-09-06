@@ -2,17 +2,17 @@ import ace from 'brace'
 import 'brace/mode/javascript'
 import 'brace/mode/css'
 import 'brace/theme/tomorrow'
-import jss from './jss'
+import jss, {versions} from './jss'
 import layout from './layout'
-import style from './style'
+import {styles} from './theme'
 import example from './example'
 
 function render() {
-  const sheet = jss.createStyleSheet(style).attach()
+  const sheet = jss.createStyleSheet(styles).attach()
   const div = document.createElement('div')
   div.innerHTML = layout({
     classes: sheet.classes,
-    version: jss.version
+    versions
   })
   document.body.appendChild(div)
 
