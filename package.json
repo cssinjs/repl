@@ -1,7 +1,7 @@
 {
   "name": "repl",
   "description": "JSS Repl",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "Oleg Slobodskoi",
     "email": "oleg008@gmail.com"
@@ -44,6 +44,7 @@
   "dependencies": {
     "brace": "^0.7.0",
     "jss": "^5.5.1",
+    "jss-compose": "^1.0.1",
     "jss-preset-default": "^0.3.0"
   },
   "scripts": {

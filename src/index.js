@@ -46,14 +46,12 @@ function setupEditor(editor, options = {}) {
 }
 
 function convert(str) {
-  let userStyle
   try {
-    userStyle = new Function(str)() // eslint-disable-line no-new-func
+    return jss.createStyleSheet(new Function(str)()).toString()
   }
   catch (err) {
     return err.message
   }
-  return jss.createStyleSheet(userStyle).toString()
 }
 
 function load({input, output}) {
