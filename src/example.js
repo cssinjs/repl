@@ -8,9 +8,15 @@ return {
   button: {
     extend: font,
     border: 'none',
-    margin: [[5, 10]],
+    margin: [5, 10],
     transition: ['background', 'color', 'font-size'],
     transitionDuration: 300,
+    background: {
+      color: 'white',
+      image: '/some/url',
+      repeat: 'no-repeat',
+      position: 'contain'
+    },
     '&:before': {
       content: '"icon"'
     }
@@ -23,8 +29,12 @@ return {
     },
     '&:hover': {
       border: [
-        [1, 'solid', 'blue'], [1, 'solid', 'green']
-      ]
+        [1, 'solid', 'blue'],
+        [1, 'solid', 'green']
+      ],
+      '& span': {
+        color: 'red'
+      }
     }
   },
   '@media (min-width: 1024px)': {
