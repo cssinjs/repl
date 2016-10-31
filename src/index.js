@@ -4,7 +4,7 @@ import 'brace/mode/css'
 import 'brace/theme/tomorrow'
 import jss, {versions} from './jss'
 import layout from './layout'
-import {styles} from './theme'
+import styles from './theme'
 import example from './example'
 
 function render() {
@@ -46,6 +46,7 @@ function setupEditor(editor, options = {}) {
 }
 
 function convert(str) {
+  /* eslint-disable no-new-func */
   try {
     return jss.createStyleSheet(new Function(str)()).toString()
   }

@@ -1,7 +1,7 @@
 const logoSize = 70
 const margin = 10
 
-export const styles = {
+export default {
   repl: {
     fontFamily: 'Verdana',
     fontSize: '14px',
