@@ -13,7 +13,7 @@ return {
     transitionDuration: 300,
     background: {
       color: 'white',
-      image: '/some/url',
+      image: 'url("/some/url/image.png")',
       repeat: 'no-repeat',
       position: 'contain'
     },
@@ -29,8 +29,11 @@ return {
     },
     '&:hover': {
       border: [
-        [1, 'solid', 'blue'],
-        [1, 'solid', 'green']
+        [1, 'solid', 'blue']
+      ],
+      boxShadow: [
+        [0, 0, 0, '10px', 'blue'],
+        [0, 0, 0, '15px', 'green']
       ],
       '& span': {
         color: 'red'
