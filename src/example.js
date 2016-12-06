@@ -32,8 +32,8 @@ return {
         [1, 'solid', 'blue']
       ],
       boxShadow: [
-        [0, 0, 0, '10px', 'blue'],
-        [0, 0, 0, '15px', 'green']
+        [0, 0, 0, 10, 'blue'],
+        [0, 0, 0, 15, 'green']
       ],
       '& span': {
         color: 'red'
