@@ -5,7 +5,7 @@ export default ({classes, versions}) => `
       <section>
         <h2>JSS Playground</h2>
         <p>JSS is on the left, CSS on the right. JSS code is a function body.</p>
-        <p>jss@${versions.jss}, jss-preset-default@${versions.preset}, jss-expand@${versions.expand}</p>
+        <p>jss@${versions.jss}, jss-preset-default@${versions.preset}</p>
       </section>
     </header>
     <div class="${classes.sections}">
