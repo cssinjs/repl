@@ -2,6 +2,7 @@
   "name": "repl",
   "description": "JSS Repl",
   "version": "2.1.0",
+  "private": true,
   "author": {
     "name": "Oleg Slobodskoi",
     "email": "oleg008@gmail.com"
