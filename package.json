@@ -1,7 +1,7 @@
 {
   "name": "repl",
   "description": "JSS Repl",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "author": {
     "name": "Oleg Slobodskoi",
@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "brace": "^0.9.0",
-    "jss": "^6.0.0",
-    "jss-preset-default": "^1.1.0"
+    "jss": "^6.1.1",
+    "jss-preset-default": "^1.2.1"
   },
   "scripts": {
     "all": "npm run lint && npm run build",
