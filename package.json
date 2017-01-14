@@ -1,7 +1,7 @@
 {
   "name": "repl",
   "description": "JSS Repl",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "author": {
     "name": "Oleg Slobodskoi",
