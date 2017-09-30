@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "brace": "^0.9.0",
-    "jss": "^8.0.0",
-    "jss-preset-default": "^3.0.0"
+    "jss": "^9.0.0",
+    "jss-preset-default": "^4.0.0"
   },
   "scripts": {
     "all": "npm run lint && npm run build",
