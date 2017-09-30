@@ -53,6 +53,6 @@
     "build": "npm run clean && npm run build:min",
     "build:min": "NODE_ENV=production webpack src/index.js dist/repl.js",
     "lint": "eslint ./src",
-    "prepublishOnly": "npm run all"
+    "postversion": "npm run all"
   }
 }
