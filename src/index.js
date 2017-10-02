@@ -48,11 +48,23 @@ function setupEditor(editor, options = {}) {
 function convert(str) {
   /* eslint-disable no-new-func */
   try {
-    return jss.createStyleSheet(new Function(str)()).toString()
+    const transpiledStr = window.Babel.transform(str, {presets: ['es2015']}).code
+    return jss.createStyleSheet(evalModule(transpiledStr)).toString()
   }
   catch (err) {
     return err.message
   }
+}
+
+function evalModule(str) {
+  return new Function(`var module = {
+        exports: {}
+    };
+    var exports = module.exports;
+
+    (function(module, exports) {${str} }
+    )(module, exports)
+    return exports.default`)()
 }
 
 function load({input, output}) {
