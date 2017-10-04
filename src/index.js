@@ -8,6 +8,8 @@ import styles from './theme'
 import example from './example'
 import pkginfo from '../package.json'
 
+const exampleKey = `jss-repl-${pkginfo.version}`
+
 function render() {
   const sheet = jss.createStyleSheet(styles).attach()
   const div = document.createElement('div')
@@ -69,8 +71,8 @@ function evalModule(str) {
 }
 
 function load({input, output}) {
-  const jssStr = localStorage[pkginfo.version] || example
-  if (!localStorage[pkginfo.version]) localStorage.clear()
+  const jssStr = localStorage[exampleKey] || example
+  if (!localStorage[exampleKey]) localStorage.clear()
   if (jssStr) {
     renderInput(input, jssStr)
     renderOutput(output, jssStr)
@@ -78,7 +80,7 @@ function load({input, output}) {
 }
 
 function save(str) {
-  localStorage[pkginfo.version] = str
+  localStorage[exampleKey] = str
 }
 
 function listen({input, output}) {
