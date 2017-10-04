@@ -6,6 +6,7 @@ import jss, {versions} from './jss'
 import layout from './layout'
 import styles from './theme'
 import example from './example'
+import pkginfo from '../package.json'
 
 function render() {
   const sheet = jss.createStyleSheet(styles).attach()
@@ -68,7 +69,8 @@ function evalModule(str) {
 }
 
 function load({input, output}) {
-  const jssStr = localStorage.jss || example
+  const jssStr = localStorage[pkginfo.version] || example
+  if (!localStorage[pkginfo.version]) localStorage.clear()
   if (jssStr) {
     renderInput(input, jssStr)
     renderOutput(output, jssStr)
@@ -76,7 +78,7 @@ function load({input, output}) {
 }
 
 function save(str) {
-  localStorage.jss = str
+  localStorage[pkginfo.version] = str
 }
 
 function listen({input, output}) {
