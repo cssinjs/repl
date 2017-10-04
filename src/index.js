@@ -6,6 +6,9 @@ import jss, {versions} from './jss'
 import layout from './layout'
 import styles from './theme'
 import example from './example'
+import pkginfo from '../package.json'
+
+const exampleKey = `jss-repl-${pkginfo.version}`
 
 function render() {
   const sheet = jss.createStyleSheet(styles).attach()
@@ -48,15 +51,28 @@ function setupEditor(editor, options = {}) {
 function convert(str) {
   /* eslint-disable no-new-func */
   try {
-    return jss.createStyleSheet(new Function(str)()).toString()
+    const transpiledStr = window.Babel.transform(str, {presets: ['es2015']}).code
+    return jss.createStyleSheet(evalModule(transpiledStr)).toString()
   }
   catch (err) {
     return err.message
   }
 }
 
+function evalModule(str) {
+  return new Function(`var module = {
+        exports: {}
+    };
+    var exports = module.exports;
+
+    (function(module, exports) {${str} }
+    )(module, exports)
+    return exports.default`)()
+}
+
 function load({input, output}) {
-  const jssStr = localStorage.jss || example
+  const jssStr = localStorage[exampleKey] || example
+  if (!localStorage[exampleKey]) localStorage.clear()
   if (jssStr) {
     renderInput(input, jssStr)
     renderOutput(output, jssStr)
@@ -64,7 +80,7 @@ function load({input, output}) {
 }
 
 function save(str) {
-  localStorage.jss = str
+  localStorage[exampleKey] = str
 }
 
 function listen({input, output}) {

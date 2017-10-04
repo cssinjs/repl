@@ -4,7 +4,7 @@ export default
   lineHeight: 1
 };
 
-return {
+export default {
   button: {
     extend: font,
     border: 'none',
