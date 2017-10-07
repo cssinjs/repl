@@ -4,7 +4,7 @@ export default ({classes, versions}) => `
       <a href="https://github.com/jsstyles/jss"></a>
       <section>
         <h2>JSS Playground</h2>
-        <p>JSS is on the left, CSS on the right. JSS code is a function body.</p>
+        <p>JSS is on the left, CSS on the right.</p>
         <p>jss@${versions.jss}, jss-preset-default@${versions.preset}</p>
       </section>
     </header>
