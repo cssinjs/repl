@@ -1,5 +1,5 @@
 {
-  "name": "repl",
+  "name": "jss-repl",
   "description": "JSS Repl",
   "version": "5.2.0",
   "private": true,
@@ -23,7 +23,7 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "engines": {
-    "node": ">=4.0.0 <6.0.0"
+    "node": ">=8"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
