@@ -15,14 +15,13 @@ function render() {
   const div = document.createElement('div')
   div.innerHTML = layout({
     classes: sheet.classes,
-    versions
+    versions,
   })
   document.body.appendChild(div)
 
   const inputElem = document.getElementsByClassName(sheet.classes.input)[0]
   const input = ace.edit(inputElem)
   setupEditor(input, {mode: 'ace/mode/javascript'})
-
 
   const outputElem = document.getElementsByClassName(sheet.classes.output)[0]
   const output = ace.edit(outputElem)
@@ -42,7 +41,7 @@ function setupEditor(editor, options = {}) {
   session.setOptions({
     tabSize: 2,
     useSoftTabs: true,
-    ...options
+    ...options,
   })
   editor.setTheme('ace/theme/tomorrow')
   editor.$blockScrolling = Infinity
@@ -51,8 +50,9 @@ function setupEditor(editor, options = {}) {
 function convert(str) {
   /* eslint-disable no-new-func */
   try {
-    const transpiledStr = window.Babel.transform(str, {presets: ['es2015']}).code
-    return jss.createStyleSheet(evalModule(transpiledStr)).toString()
+    const transpiledStr = window.Babel.transform(str, {presets: ['es2015']})
+      .code
+    return jss.createStyleSheet(evalModule(transpiledStr)).update().toString()
   }
   catch (err) {
     return err.message
