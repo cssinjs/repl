@@ -21,8 +21,8 @@ export default {
       content: '"icon"'
     }
   },
-  someClassName: {
-    background: 'red'
+  text: {
+    background: 'blue'
   },
   redButton: {
     extend: 'button',
@@ -42,8 +42,8 @@ export default {
         color: 'red'
       }
     },
-    '&:hover $someClassName': {
-      background: 'blue'
+    '&:hover $text': {
+      background: 'red'
     },
   },
   '@media (min-width: 1024px)': {
