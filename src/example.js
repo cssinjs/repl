@@ -21,6 +21,9 @@ export default {
       content: '"icon"'
     }
   },
+  someClassName: {
+    background: 'red'
+  },
   redButton: {
     extend: 'button',
     background: 'linear-gradient(to right, red 0%, green 100%)',
@@ -38,7 +41,10 @@ export default {
       '& span': {
         color: 'red'
       }
-    }
+    },
+    '&:hover $someClassName': {
+      background: 'blue'
+    },
   },
   '@media (min-width: 1024px)': {
     button: {
